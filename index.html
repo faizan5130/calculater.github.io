@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
+    <style>
+     .calculator {
+  width: 200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f1f1f1;
+}
+
+input[type="text"] {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 5px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+}
+
+    </style>
+</head>
+<body>
+    <!DOCTYPE html>
+<html>
+<head>
+  <title>Calculator</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <div class="calculator">
+    <input type="text" id="result" readonly>
+    <div class="buttons">
+        <button onclick="clearResult()">C</button>
+        <button onclick="appendNumber(7)">7</button>
+        <button onclick="appendNumber(8)">8</button>
+        <button onclick="appendOperator(9)">9</button>
+        <button onclick="appendNumber(9)">4</button>
+        <button onclick="appendNumber(4)">5</button>
+        <button onclick="appendNumber(5)">6</button>
+        <button onclick="appendNumber('*')">*</button>
+        <button onclick="appendNumber(1)">1</button>
+        <button onclick="appendNumber(2)">2</button>
+        <button onclick="appendOperator(3)">3</button>
+        <button onclick="appendOperator('-')">-</button>
+        <button onclick="appendNumber(0)">0</button>
+        <button onclick="calculate()">=</button>
+        <button onclick="appendOperator('/')">/</button>
+        <button onclick="appendOperator('+')">+</button>
+    </div>
+      
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+</body>
+<script>
+  let currentExpression = '';
+
+function appendNumber(number) {
+  currentExpression += number;
+  updateResult();
+}
+
+function appendOperator(operator) {
+  currentExpression += operator;
+  updateResult();
+}
+
+function calculate() {
+  try {
+    const result = eval(currentExpression);
+    currentExpression = result.toString();
+    updateResult();
+  } catch (error) {
+    currentExpression = '';
+    updateResult();
+    alert('Invalid expression!');
+  }
+}
+
+function clearResult() {
+  currentExpression = '';
+  updateResult();
+}
+
+function updateResult() {
+  const resultElement = document.getElementById('result');
+  resultElement.value = currentExpression;
+}
+
+</script>
+</html>
